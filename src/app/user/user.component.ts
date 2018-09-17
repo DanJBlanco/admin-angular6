@@ -3,16 +3,16 @@ import { Component, OnInit } from '@angular/core';
 declare function init_plugins();
 
 @Component({
-  selector: 'app-pages',
-  templateUrl: './pages.component.html',
+  selector: 'app-user',
+  templateUrl: './user.component.html',
   styles: []
 })
-export class PagesComponent implements OnInit {
+export class UserComponent implements OnInit {
 
-  constructor() { }
-
+  constructor() {
+  }
+  
   ngOnInit() {
-
     init_plugins();
   }
 

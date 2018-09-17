@@ -3,6 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Servicios
+import { ServiceModule } from './services/service.module';
+
 // Modulos independientes
 import { PagesModule } from './pages/pages.module';
 import { UserModule } from './user/user.module';
@@ -23,7 +26,8 @@ import { AppComponent } from './app.component';
     APP_ROUTES,
     PagesModule,
     UserModule,
-    FormsModule
+    FormsModule,
+    ServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

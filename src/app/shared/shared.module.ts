@@ -1,4 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 // Componentes de la Aliacion
 import { Nopage404Component } from './nopage404/nopage404.component';
@@ -21,7 +23,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
         Nopage404Component
     ],
     imports: [
-
+        RouterModule,
+        CommonModule
     ],
     providers: [
 
