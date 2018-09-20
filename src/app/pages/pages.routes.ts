@@ -1,3 +1,5 @@
+import { RxjsComponent } from './rxjs/rxjs.component';
+import { PromesasComponent } from './promesas/promesas.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -9,9 +11,11 @@ const pagesRoutes: Routes = [
         path: '',
         component: PagesComponent,
         children: [
-            { path: 'dashboard', component: DashboardComponent },
-            { path: 'progress', component: ProgressComponent },
-            { path: 'graficas1', component: Graficas1Component },
+            { path: 'dashboard', component: DashboardComponent, data: {titulo: 'Dashboard'} },
+            { path: 'progress', component: ProgressComponent, data: {titulo: 'Progress'} },
+            { path: 'graficas1', component: Graficas1Component, data: {titulo: 'Graficas'} },
+            { path: 'promesas', component: PromesasComponent, data: {titulo: 'Promesas'} },
+            { path: 'rxjs', component: RxjsComponent, data: {titulo: 'RxJs'} },
             { path: '', pathMatch: 'full', redirectTo: '/dashboard' },
         ]
     }

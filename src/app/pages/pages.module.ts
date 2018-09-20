@@ -13,6 +13,8 @@ import { IncrementadorComponent } from '../components/incrementador/incrementado
 
 // Rutas
 import { PAGES_ROUTES } from './pages.routes';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +24,8 @@ import { PAGES_ROUTES } from './pages.routes';
         Graficas1Component,
         IncrementadorComponent,
         GraficoDonaComponent,
+        PromesasComponent,
+        RxjsComponent,
     ],
     exports: [
         DashboardComponent,
