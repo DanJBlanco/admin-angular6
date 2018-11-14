@@ -9,18 +9,20 @@
             <ul id="sidebarnav">
                 <li class="user-profile">
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                        <img src="../../../assets/images/users/8.jpg" alt="user" />
-                        <span class="hide-menu"> usuario.nombre </span>
+                        <img [src]="usuario.img | imagen" alt="user" />
+                        <span class="hide-menu"> {{usuario.nombre}} </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <!-- <li><a routerLinkActive="active" routerLink="/perfil">Perfil </a></li> -->
-                        <li><a href="javascript:void()">Perfil </a></li>
+                        <li>
+                            <a [routerLink]="[ '/perfil' ]" routerLinkActive="active">Perfil</a>
+                        </li>
                         <li><a href="javascript:void()">My Balance</a></li>
                         <li><a href="javascript:void()">Inbox</a></li>
                         <!-- <li><a routerLinkActive="active" routerLink="/account-settings">Account Setting</a></li> -->
                         <li><a routerLink="/setting" routerLinkActive="active">Account Setting</a></li>
                         <!-- <li><a (click)="_usuarioService.logout()" class="pointer">Logout</a></li> -->
-                        <li><a class="pointer">Logout</a></li>
+                        <li><a href="javascript:void()" (click)="_usuarioService.logout()">Logout</a></li>
                     </ul>
                 </li>
                 <li class="nav-devider"></li>

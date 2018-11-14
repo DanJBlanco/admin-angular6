@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
+// Pipes
+import { PipesModule } from '../pipes/pipes.module';
+
 // Componentes de la Aliacion
 import { Nopage404Component } from './nopage404/nopage404.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -24,7 +27,8 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
     ],
     imports: [
         RouterModule,
-        CommonModule
+        CommonModule,
+        PipesModule
     ],
     providers: [
 

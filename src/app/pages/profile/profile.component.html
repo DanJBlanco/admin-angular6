@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+          <div class="card-body card-block">
+              <h4 class="card-title">Perfil del usuario</h4>
+            <form ngNativeActivate #f="ngForm" (ngSubmit)="actualizarDatos( f.value )" action="" method="post" class="">
+              <div class="form-group">
+                  <label for="nombre">Nombre de usuario</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                  <input [ngModel]="usuario.nombre" type="text" id="nombre" name="nombre" placeholder="Nombre Usuario" required class="form-control">
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="email">Correo de usuario</label>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                  <input [ngModel]="usuario.email" [disabled]="usuario.google" type="email" id="email" name="email" placeholder="Correo de Usuario" required class="form-control">
+                </div>
+              </div>
+              <div class="form-actions form-group">
+                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10"> <i class="fa fa-save"></i> Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <div class="col-xs-5 col-sm-5">
+        <div class="card">
+            <div class="card-body card-block" align="center">
+                <h4 class="card-title">Imagen Perfil</h4>
+                <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="w150" >
+                <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150" >
+                <br>
+                <input type="file" [style.color]="imagenCargar ? 'gray' : 'transparent' " (change)="seleccionImagen( $event.target.files[0] )">
+
+                <br><br>
+                <button (click)="cambiarImagen()" [disabled]="!imagenCargar" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                    Actualizar Foto
+                  </button>
+            </div>
+        </div>
+    </div>
+
+
+</div>

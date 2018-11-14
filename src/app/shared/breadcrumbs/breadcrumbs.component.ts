@@ -19,11 +19,11 @@ export class BreadcrumbsComponent implements OnInit {
     ) {
 
     this.getDataRouter().subscribe( data => {
-      console.log( data );
+      // console.log( data );
       this.label = data.titulo;
       this._title.setTitle(this.label);
 
-      let metaTag: MetaDefinition = {
+      const metaTag: MetaDefinition = {
         name: 'descrption',
         content: this.label
       };
@@ -34,7 +34,7 @@ export class BreadcrumbsComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   getDataRouter() {
     return this.router.events.pipe(
       filter(( event ) =>  event instanceof ActivationEnd ),
