@@ -1,4 +1,3 @@
-import { URL_SERVICIOS } from './../../config/config';
 import { Usuario } from './../../models/usuario.models';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +5,7 @@ import { map } from 'rxjs/operators';
 import swal from 'sweetalert';
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
+import { URL_SERVICIOS } from '../../config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -78,7 +78,7 @@ export class UsuarioService {
 
     if ( recuerdame ) {
       localStorage.setItem('email',  usuario.email);
-    } else{
+    } else {
       localStorage.removeItem('email');
     }
     const url = URL_SERVICIOS + '/login';
@@ -115,9 +115,15 @@ export class UsuarioService {
     return this.http.put(url, usuario)
                 .pipe(
                   map( (resp: any) => {
-                    this.usuario = resp.usuario;
+                    
+                    if (usuario._id === this.usuario._id) {
+
+                      this.usuario = resp.usuario;
+                      this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+                    }
+                      
+                    
                     swal('Usuario actualizado', usuario.nombre, 'success');
-                    this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
                     return true;
                   })
                 );
@@ -127,17 +133,41 @@ export class UsuarioService {
 
     this._subirArchivoService.subirArchivo(file, 'usuarios', id)
       .then( (resp: any) => {
-        console.log(resp);
-        
+        // console.log(resp);
         this.usuario.img = resp.usuario.img;
         swal( 'Imagen Actualizada', this.usuario.nombre, 'success');
         this.guardarStorage(id, this.token, resp.usuario);
       })
       .catch( resp => {
-        console.log(resp);
-        
+        // console.log(resp);
       }
       );
 
+  }
+
+  cargarUsuarios( desde: number = 0 ) {
+    const url = URL_SERVICIOS + '/usuario?desde=' + desde;
+    return this.http.get(url);
+  }
+
+  buscarUsuario ( parametro: string ) {
+    // console.log( parametro );
+    
+    const url = URL_SERVICIOS + '/busqueda/coleccion/usuarios/' + parametro;
+
+    // console.log( url);
+    
+    return this.http.get(url);
+  }
+
+  borrarUsuario( id: string) {
+    
+    const url = URL_SERVICIOS + '/usuario/' + id + '?token=' + this.token;
+    return this.http.delete(url).pipe(
+      map( resp => {
+        swal('Usuario borrado', 'El usuario a sido eliminado correctamente', 'success');
+        return true;
+      })
+    );
   }
 }

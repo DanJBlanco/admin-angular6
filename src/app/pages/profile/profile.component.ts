@@ -17,8 +17,7 @@ export class ProfileComponent implements OnInit {
     public _userService: UsuarioService
     ) {
       this.usuario = this._userService.usuario;
-      console.log(this.usuario);
-      
+      // console.log(this.usuario);
     }
 
   ngOnInit() {
@@ -59,7 +58,7 @@ export class ProfileComponent implements OnInit {
       this.imagenTemp = reader.result;
 
     };
-    console.log(archivo);
+    // console.log(archivo);
     this.imagenCargar = archivo;
 
   }
